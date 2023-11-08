@@ -1,3 +1,4 @@
+import { merge } from 'jquery';
 import { testResultsProcessor } from '../jest.config';
 
 const sum = (a: number, b: number): number => a + b;
@@ -341,3 +342,381 @@ const multipleArrays = (...arrays: any[]) => [].concat(...arrays);
 console.log(multipleArrays([1, 2, 3], [4, 5, 6]));
 console.log(multipleArrays(['a', 'b', 'c'], [4, 5, 6]));
 console.log(multipleArrays([true, true], [1, 2], ['a', 'b']));
+
+const arrayOfObjects = (arr: any[]) => arr.sort((a, b) => a.a - b.b);
+
+console.log(arrayOfObjects([{ a: 1, b: 2 }, { a: 5, b: 4 }]));
+console.log(arrayOfObjects([{ a: 2, b: 10 }, { a: 5, b: 4 }]));
+console.log(arrayOfObjects([{ a: 1, b: 7 }, { a: 2, b: 1 }]));
+
+const removeDublicates = (a: number[], b: number[]) => {
+  const mergedArrays = a.concat(b);
+  const sortedArrays = mergedArrays.sort((c, d) => c - d);
+  const result = [];
+  for (let i = 0; i < sortedArrays.length; i++) {
+    if (sortedArrays[i] !== sortedArrays[i - 1]) {
+      result.push(sortedArrays[i]);
+    }
+  }
+  return result;
+};
+
+console.log(removeDublicates([1, 2, 3], [3, 4, 5]));
+console.log(removeDublicates([-10, 22, 333, 42], [-11, 5, 22, 41, 42]));
+
+const sumElements = (a: number[], b: number) => {
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] > b) {
+      result += a[i];
+    }
+  }
+  return result;
+};
+
+console.log(sumElements([1, 2, 3, 4, 5, 6, 7], 2));
+console.log(sumElements([-10, -11, -3, 1, -4], -3));
+console.log(sumElements([78, 99, 100, 101, 401], 99));
+
+const minMax = (min: number, max: number) => {
+  const result = [];
+  for (let i = min; i <= max; i++) {
+    result.push(i);
+  }
+  return result;
+};
+
+console.log(minMax(2, 10));
+console.log(minMax(1, 3));
+console.log(minMax(-5, 5));
+console.log(minMax(2, 7));
+
+const fristLetterGroup = (arr: string[]) => {
+  const firstObejct: Record<string, string[]> = {};
+  for (let i = 0; i < arr.length; i++) {
+    const firstLetter = arr[i][0];
+    if (!firstObejct[firstLetter]) {
+      firstObejct[firstLetter] = [];
+    }
+    firstObejct[firstLetter].push(arr[i]);
+  }
+  return firstObejct;
+};
+
+console.log(fristLetterGroup(['Alf', 'Alice', 'Ben']));
+console.log(fristLetterGroup(['Ant', 'Bear', 'Bird']));
+console.log(fristLetterGroup(['Berlin', 'Paris', 'Prague']));
+
+const elementsArray = (arr: any[], n: number) => {
+  const result = [];
+  if (n >= 6) {
+    result[0] = n;
+  } else {
+    result[0] = 0;
+  }
+  return result.concat(arr);
+};
+
+console.log(elementsArray([1, 2, 3], 6));
+console.log(elementsArray(['a', 'b'], 2));
+console.log(elementsArray([null, false], 11));
+
+const nthArray = (a: number[], n: number) => {
+  const result = [];
+  for (let i = -1; i < a.length; i += n) {
+    result.push(a[i]);
+  }
+  result.shift();
+  return result;
+};
+
+console.log(nthArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+console.log(nthArray([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5));
+console.log(nthArray([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2));
+
+const objectCountry = (obj: {country: string, continent: string}) => obj.country;
+
+console.log(objectCountry({ continent: 'Asia', country: 'Japan' }));
+console.log(objectCountry({ country: 'Sweden', continent: 'Europe' }));
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tip: you might want to use the square brackets property accessor
+
+const newObject = (obj: Record<string, any>) => obj['prop-2'];
+
+console.log(newObject({ one: 1, 'prop-2': 2 }));
+console.log(newObject({ 'prop-2': 'two', prop: 'test' }));
+
+// Write a function that takes an object with two properties and a string as arguments
+// It should return the value of the property with key equal to the value of the string
+
+const newObjectAB = (obj: { [prop1: string]: any }, str: string) => {
+  if (str in obj) {
+    return obj[str];
+  }
+  return undefined;
+};
+
+console.log(newObjectAB({ continent: 'Asia', country: 'Japan' }, 'continent'));
+console.log(newObjectAB({ country: 'Sweden', continent: 'Europe' }, 'country'));
+
+// Write a function that takes an object (a) and a string (b) as argument
+// Return true if a has a property with key b
+// Return false otherwise
+
+const objectAndString = (obj: Record<string, any>, str: string) => {
+  if (str in obj) {
+    return true;
+  }
+  return false;
+};
+
+console.log(objectAndString({ a: 1, b: 2, c: 3 }, 'b'));
+console.log(objectAndString({ x: 'a', y: 'b', z: 'c' }, 'a'));
+console.log(objectAndString({ x: 'a', y: 'b', z: 'c' }, 'z'));
+
+// Write a function that a string (a) as argument
+// Create an object that has a property with key 'key' and a value of a
+// Return the object
+
+const keyObject = (a: string) => {
+  const myObject = {
+    key: a,
+  };
+  return myObject;
+};
+
+console.log(keyObject('a'));
+console.log(keyObject('z'));
+console.log(keyObject('b'));
+
+// Write a function that takes two strings (a and b) as arguments
+// Create an object that has a property with key 'a' and a value of 'b'
+// Return the object
+
+const twoStringObject = (a: string, b:string) => {
+  const myObject = {
+    [a]: b,
+  };
+  return myObject;
+};
+
+console.log(twoStringObject('a', 'b'));
+console.log(twoStringObject('z', 'x'));
+console.log(twoStringObject('b', 'w'));
+
+// Write a function that takes two arrays (a and b) as arguments
+// Create an object that has properties with keys 'a' and corresponding values 'b'
+// Return the object
+
+const arrayObjects = (a: any[], b: any[]) => {
+  const myObject: Record<string, any> = {};
+  for (let i = 0; i < a.length; i++) {
+    myObject[(a[i])] = b[i];
+  }
+  return myObject;
+};
+
+console.log(arrayObjects(['a', 'b', 'c'], [1, 2, 3]));
+console.log(arrayObjects(['w', 'x', 'y', 'z'], [10, 9, 5, 2]));
+console.log(arrayObjects([1, 'b'], ['a', 2]));
+
+// Write a function that takes an object (a) as argument
+// Return an array with all object keys
+
+const newKeyObject = (obj: Record<string, any>) => Object.keys(obj);
+
+console.log(newKeyObject({ a: 1, b: 2, c: 3 }));
+console.log(newKeyObject({
+  j: 9, i: 2, x: 3, z: 4,
+}));
+console.log(newKeyObject({ w: 15, x: 22, y: 13 }));
+
+// Write a function that takes an object (a) as argument
+// Return the sum of all object values
+
+const sumObjectValues = (obj: Record<string, any>) => {
+  const values = Object.values(obj);
+  const summedElements = values.reduce((acc, currentValue) => acc + currentValue, 0);
+  return summedElements;
+};
+
+console.log(sumObjectValues({ a: 1, b: 2, c: 3 }));
+console.log(sumObjectValues({
+  j: 9, i: 2, x: 3, z: 4,
+}));
+console.log(sumObjectValues({ w: 15, x: 22, y: 13 }));
+
+// Write a function that takes an object as argument
+// It should return an object with all original object properties
+// except for the property with key 'b'
+
+const objectNoB = (obj: Record<string, any>) => {
+  delete obj.b;
+  return obj;
+};
+
+console.log(objectNoB({ a: 1, b: 7, c: 3 }));
+console.log(objectNoB({ b: 0, a: 7, d: 8 }));
+console.log(objectNoB({
+  e: 6, f: 4, b: 5, a: 3,
+}));
+
+// Write a function that takes two objects as arguments
+// Unfortunately, the property 'b' in the second object has the wrong key
+// should be named 'd' instead
+// Merge both objects and correct the wrong property name
+// Return the resulting object
+// It should have the properties 'a', 'b', 'c', 'd', and 'e'
+
+const twoObjects = (obj: Record<string, any>, obj2: Record<string, any>) => {
+  obj2.d = obj2.b;
+  delete obj2.b;
+  const objectCopy = Object.assign(obj, obj2);
+  return objectCopy;
+};
+
+console.log(twoObjects({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 }));
+console.log(twoObjects({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }));
+
+// Write a function that takes an object (a) and a number (b) as arguments
+// Multiply all values of 'a' by 'b'
+// Return the resulting object
+
+const multiplyObject = (a: Record<string, any>, b: number) => {
+  const randomObject: Record<string, any> = {};
+  for (const key in a) {
+    if (a.hasOwnProperty(key)) {
+      randomObject[key] = a[key] * b;
+    }
+  }
+  return randomObject;
+};
+
+console.log(multiplyObject({ a: 1, b: 2, c: 3 }, 3));
+console.log(multiplyObject({
+  j: 9, i: 2, x: 3, z: 4,
+}, 10));
+console.log(multiplyObject({ w: 15, x: 22, y: 13 }, 6));
+
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+const swappedKeyValues = (obj: Record<string, any>) => {
+  const swappedValues = Object.entries(obj).map(([key, value]) => [value, key]);
+  return Object.fromEntries(swappedValues);
+};
+
+console.log(swappedKeyValues({
+  z: 'a', y: 'b', x: 'c', w: 'd',
+}));
+console.log(swappedKeyValues({
+  2: 'a', 4: 'b', 6: 'c', 8: 'd',
+}));
+console.log(swappedKeyValues({ a: 1, z: 24 }));
+
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+const emptyStringsObject = (obj: Record<string, any>) => {
+  for (const key in obj) {
+    if (typeof obj[key] === 'string' && obj[key].trim() === '') {
+      obj[key] = null;
+    }
+  }
+  return obj;
+};
+
+console.log(emptyStringsObject({ a: 'a', b: 'b', c: '' }));
+console.log(emptyStringsObject({
+  a: '', b: 'b', c: ' ', d: 'd',
+}));
+console.log(emptyStringsObject({
+  a: 'a', b: 'b ', c: ' ', d: '',
+}));
+
+// Write a function that takes an object as argument containing properties with personal information
+// Extract firstName, lastName, size, and weight if available
+// If size or weight is given transform the value to a string
+// Attach the unit cm to the size
+// Attach the unit kg to the weight
+// Return a new object with all available properties that we are interested in
+
+const personalObject = (obj: Record<string, any>) => {
+  const myObject: Record<string, any> = {};
+
+  if (obj.hasOwnProperty('fn')) {
+    myObject.fn = obj.fn;
+  }
+  if (obj.hasOwnProperty('ln')) {
+    myObject.ln = obj.ln;
+  }
+  if (obj.hasOwnProperty('size')) {
+    myObject.size = `${obj.size.toString()}cm`;
+  }
+  if (obj.hasOwnProperty('weight')) {
+    myObject.weight = `${obj.weight.toString()}cm`;
+  }
+  return myObject;
+};
+
+console.log(personalObject({
+  fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67,
+}));
+console.log(personalObject({
+  fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102,
+}));
+console.log(personalObject({
+  fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71,
+}));
+console.log(personalObject({
+  fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de',
+}));
+
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tip: try not to mutate the original array
+
+const arrayStringAndObjects = (obj: Record<string, any>, str: string) => {
+  for (let i = 0; i < obj.length; i++) {
+    obj[i].continent = str;
+  }
+  return obj;
+};
+
+console.log(arrayStringAndObjects([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia'));
+console.log(arrayStringAndObjects([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'));
+
+// Write a function that takes an array of numbers as argument
+// Convert the array to an object
+// It should have a key for each unique value of the array
+// The corresponding object value should be the number of times the key occurs within the array
+
+// Write a function that takes two date instances as arguments
+// It should return true if the dates are equal
+// It should return false otherwise
+
+// Write a function that takes two date instances as argument
+// It should return the number of days that lies between those dates
+
+// Write a function that takes two date instances as argument
+// It should return true if they fall on the exact same day
+// It should return false otherwise
+
+const spreadArray = (...array: any[]) => [].concat(...array);
+
+console.log(spreadArray([1, 2], [3, 4]));
+console.log(spreadArray([1, 2], [3, 4, 5, 6]));
+
+const arrayAndString = (arr: any[], str: string) => [...arr, str];
+
+console.log(arrayAndString(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+
+const stringAndArray = (arr: any[], str: string) => [str, ...arr];
+
+console.log(stringAndArray(['Apple', 'Orange', 'Banana'], 'Kiwi'));
