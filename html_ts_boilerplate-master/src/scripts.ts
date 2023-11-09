@@ -1,5 +1,4 @@
-import { merge } from 'jquery';
-import { testResultsProcessor } from '../jest.config';
+
 
 const sum = (a: number, b: number): number => a + b;
 
@@ -757,15 +756,55 @@ console.log(sameDay(new Date('2000/01/01'), new Date('2000/01/02')));
 console.log(sameDay(new Date('2001/01/01'), new Date('2000/01/01')));
 console.log(sameDay(new Date('2000/11/01'), new Date('2000/01/01')));
 
+// Write a function that takes two number arrays as parameters
+// and return an array which contains elements from both
+// arrays
+
 const spreadArray = (...array: any[]) => [].concat(...array);
 
 console.log(spreadArray([1, 2], [3, 4]));
 console.log(spreadArray([1, 2], [3, 4, 5, 6]));
 
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the last element
+
 const arrayAndString = (arr: any[], str: string) => [...arr, str];
 
 console.log(arrayAndString(['Apple', 'Orange', 'Banana'], 'Kiwi'));
 
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the first element
+
 const stringAndArray = (arr: any[], str: string) => [str, ...arr];
 
 console.log(stringAndArray(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+
+// Write a function that takes two objects as parameters
+// and return an object which contains properties from both
+// objects
+
+const mergeObjects = (a: Record<string, number>, b: Record<string, number>):
+{[x: string]: number} => {
+  const myObject = { ...a, ...b };
+  return myObject;
+};
+
+console.log(mergeObjects({ a: 1, b: 2 }, { c: 3, d: 4 }));
+console.log(mergeObjects({ a: 1, b: 2 }, {
+  c: 3, d: 4, e: 5, f: 6,
+}));
+
+// Write a function that takes an object and a string as parameters
+// and return an object which contains properties from the given object
+// and a new property favoriteMovie with the value equal to the given string
+
+const newProperty = (obj: Record<string, any>, str: string): {[x: string]: number} => {
+  const myObject = { ...obj };
+  myObject.favoriteMovie = str;
+  return myObject;
+};
+
+console.log(newProperty({ eyeColor: 'green', age: 10 }, 'Garfield'));
+console.log(newProperty({ eyeColor: 'blue', age: 15 }, 'Twilight'));
