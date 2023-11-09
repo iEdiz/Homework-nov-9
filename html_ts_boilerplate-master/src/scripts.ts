@@ -697,16 +697,65 @@ console.log(arrayStringAndObjects([{ city: 'Stockholm', country: 'Sweden' }, { c
 // It should have a key for each unique value of the array
 // The corresponding object value should be the number of times the key occurs within the array
 
+const arrayToObject = (arr: number []) => {
+  const myObject: Record<string, any> = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (myObject[arr[i]] === undefined) {
+      myObject[arr[i]] = 1;
+    } else {
+      myObject[arr[i]]++;
+    }
+  }
+  return myObject;
+};
+
+console.log(arrayToObject([1, 2, 2, 3]));
+console.log(arrayToObject([9, 9, 9, 99]));
+console.log(arrayToObject([4, 3, 2, 1]));
+
 // Write a function that takes two date instances as arguments
 // It should return true if the dates are equal
 // It should return false otherwise
 
+const dateInstances = (date1: Date, date2: Date): boolean => {
+  if (date1.getTime() === date2.getTime()) {
+    return true;
+  }
+  return false;
+};
+
+console.log(dateInstances(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00')));
+console.log(dateInstances(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+console.log(dateInstances(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+
 // Write a function that takes two date instances as argument
 // It should return the number of days that lies between those dates
+
+const daysBetween = (date1: Date, date2: Date): number => {
+  const time = date1.getTime() - date2.getTime();
+  const days = time / (1000 * 3600 * 24);
+  return Math.abs(days);
+};
+
+console.log(daysBetween(new Date('2020-06-11'), new Date('2020-06-01')));
+console.log(daysBetween(new Date('2000-01-01'), new Date('2020-06-01')));
 
 // Write a function that takes two date instances as argument
 // It should return true if they fall on the exact same day
 // It should return false otherwise
+
+const sameDay = (date1: Date, date2: Date): boolean => {
+  if (date1.getDay() === date2.getDay()) {
+    return true;
+  }
+  return false;
+};
+
+console.log(sameDay(new Date('2000/01/01'), new Date('2000/01/01')));
+console.log(sameDay(new Date('2000/01/01'), new Date('2000/01/02')));
+console.log(sameDay(new Date('2001/01/01'), new Date('2000/01/01')));
+console.log(sameDay(new Date('2000/11/01'), new Date('2000/01/01')));
 
 const spreadArray = (...array: any[]) => [].concat(...array);
 
