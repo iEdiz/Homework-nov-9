@@ -22,7 +22,7 @@ console.log(functionValue(['array']));
 // Write a function that takes two values, say a and b, as arguments
 // Return true if the two values are equal and of the same type
 
-const typeValue = (a: any, b: any) => {
+const typeValue = (a: number | string, b: number | string): boolean => {
   if (a === b && typeof a === typeof b) {
     return true;
   }
@@ -37,7 +37,7 @@ console.log(typeValue('10', '10'));
 // Write a function that takes a string (a) and a number (n) as arguments
 // Return the nth character of 'a'
 
-const nthChar = (a: string, n: number) => a.charAt(n - 1);
+const nthChar = (a: string, n: number): string => a.charAt(n - 1);
 
 console.log(nthChar('abcd', 1));
 console.log(nthChar('zyxbwpl', 5));
@@ -47,7 +47,7 @@ console.log(nthChar('gfedcba', 3));
 // Remove the first 3 characters of a
 // Return the result
 
-const removeChar = (a: string) => a.substring(3);
+const removeChar = (a: string): string => a.substring(3);
 
 console.log(removeChar('abcdefg'));
 console.log(removeChar('1234'));
@@ -57,7 +57,7 @@ console.log(removeChar('fgedcba'));
 // Extract the last 3 characters from the string
 // Return the result
 
-const removeLast = (a: string) => a.substring(a.length - 3);
+const removeLast = (a: string): string => a.substring(a.length - 3);
 
 console.log(removeLast('abcdefg'));
 console.log(removeLast('1234'));
@@ -67,7 +67,7 @@ console.log(removeLast('fgedcba'));
 // Get the first 3 characters of a
 // Return the result
 
-const firstThree = (a: string) => a.substring(0, 3);
+const firstThree = (a: string): string => a.substring(0, 3);
 
 console.log(firstThree('abcdefg'));
 console.log(firstThree('1234'));
@@ -77,7 +77,7 @@ console.log(firstThree('fgedcba'));
 // Extract the first half a
 // Return the result
 
-const firstHalf = (a: string) => {
+const firstHalf = (a: string): string => {
   if (a.length % 2 === 0) {
     return a.slice(0, a.length / 2);
   }
@@ -92,7 +92,7 @@ console.log(firstHalf('gedcba'));
 // Remove the last 3 characters of a
 // Return the result
 
-const lastThree = (a: string) => a.slice(0, -3);
+const lastThree = (a: string): string => a.slice(0, -3);
 
 console.log(lastThree('abcdefg'));
 console.log(lastThree('1234'));
@@ -101,7 +101,7 @@ console.log(lastThree('fgedcba'));
 // Write a function that takes two numbers (a and b) as argument
 // Return b percent of a
 
-const percentNumbers = (a: number, b: number) => (b / 100) * a;
+const percentNumbers = (a: number, b: number): number => (b / 100) * a;
 
 console.log(percentNumbers(100, 50));
 console.log(percentNumbers(10, 1));
@@ -114,7 +114,7 @@ console.log(percentNumbers(500, 25));
 // Finally raise to the power of f and return the result
 // Tip: mind the order
 
-const sixNumbers = (a: number, b: number, c: number, d: number, e: number, f: number) =>
+const sixNumbers = (a: number, b: number, c: number, d: number, e: number, f: number): number =>
 (((a + b) - c) * d / e) ** f;
 
 console.log(sixNumbers(6, 5, 4, 3, 2, 1));
@@ -125,7 +125,7 @@ console.log(sixNumbers(2, 3, 6, 4, 2, 3));
 // If the number is even, return true
 // Otherwise, return false
 
-const evenNumber = (a: number) => {
+const evenNumber = (a: number): boolean => {
   if (a % 2 === 0) {
     return true;
   }
@@ -140,7 +140,7 @@ console.log(evenNumber(-111));
 // Write a function that takes two strings (a and b) as arguments
 // Return the number of times a occurs in b
 
-const occurance = (a: string, b: string) => b.split(a).length - 1;
+const occurance = (a: string, b: string): number => b.split(a).length - 1;
 
 console.log(occurance('m', 'how many times does the character occur in this sentence?'));
 console.log(occurance('h', 'how many times does the character occur in this sentence?'));
@@ -151,7 +151,7 @@ console.log(occurance('z', 'how many times does the character occur in this sent
 // If a is a whole number (has no decimal place), return true
 // Otherwise, return false
 
-const wholeNumber = (a: number) => {
+const wholeNumber = (a: number): boolean => {
   if (a % 1 === 0) {
     return true;
   }
@@ -168,7 +168,7 @@ console.log(wholeNumber(10.48));
 // Otherwise, multiply both numbers
 // Return the resulting value
 
-const isSmaller = (a: number, b: number) => {
+const isSmaller = (a: number, b: number): number => {
   if (a < b) {
     return a / b;
   }
@@ -185,7 +185,7 @@ console.log(isSmaller(2, 0.5));
 // If not, append it to the end
 // Return the concatenation
 
-const containsString = (a: string, b: string) => {
+const containsString = (a: string, b: string): string => {
   if (a.includes(b)) {
     return b + a;
   }
@@ -201,7 +201,7 @@ console.log(containsString(' think, therefore I am', 'I'));
 // Round a to the 2nd digit after the comma
 // Return the rounded number
 
-const roundNumber = (a: number) => Math.round(a * 100) / 100;
+const roundNumber = (a: number): number => Math.round(a * 100) / 100;
 
 console.log(roundNumber(2.12397));
 console.log(roundNumber(3.136));
@@ -212,7 +212,7 @@ console.log(roundNumber(26.1379));
 // Split a into its individual digits and return them in an array
 // Tip: you might want to change the type of the number for the splitting
 
-const splitNumber = (a: number) => {
+const splitNumber = (a: number): string[] => {
   const b = a.toString();
   return b.split('');
 };
@@ -227,7 +227,7 @@ console.log(splitNumber(193278));
 // 'Javascript', 'Countryside', and 'Downtown'
 // You might want to apply basic JS string methods such as replace(), split(), slice() etc.
 
-const replaceString = (a: string, b: string) => {
+const replaceString = (a: string, b: string): string => {
   const splitString = b.split('');
   const reverseString = splitString.reverse();
   const joinString = reverseString.join('');
@@ -244,7 +244,7 @@ console.log(replaceString('down', 'nw%ot'));
 // If a is prime, return a
 // If not, return the next higher prime number
 
-const primeNumbers = (a: number) => {
+const primeNumbers = (a: number): boolean => {
   if (a <= 1) return false;
   if (a < 3) return true;
   if (a % 2 === 0 || a % 3 === 0) return false;
@@ -254,7 +254,7 @@ const primeNumbers = (a: number) => {
   return true;
 };
 
-const findNextPrime = (num: number) => {
+const findNextPrime = (num: number): number => {
   let nextNumber = num;
   while (true) {
     if (primeNumbers(nextNumber)) {
@@ -264,7 +264,7 @@ const findNextPrime = (num: number) => {
   }
 };
 
-const findAnyNumber = (num: number) => {
+const findAnyNumber = (num: number): number => {
   if (primeNumbers(num)) {
     return num;
   }
@@ -281,7 +281,7 @@ console.log(findAnyNumber(2000));
 // If yes, return x
 // If not, return the next higher natural number that is divisible by y
 
-const isDivisable = (x: number, y: number) => {
+const isDivisable = (x: number, y: number): number => {
   while (x % y !== 0) {
     x++;
   }
@@ -297,7 +297,7 @@ console.log(isDivisable(-5, 7));
 // Beginning at the end of 'a', insert 'b' after every 3rd character of 'a'
 // Return the resulting string
 
-const twoString = (a: string, b: string) => a.replace(/(?=(...)+$)/g, b);
+const twoString = (a: string, b: string): string => a.replace(/(?=(...)+$)/g, b);
 
 console.log(twoString('1234567', '.'));
 console.log(twoString('abcde', '$'));
@@ -308,7 +308,7 @@ console.log(twoString('zxyzxyzxyzxyzxyz', 'w'));
 // Increment each letter to the next letter in the alphabet
 // Return the correct word
 
-const nextLetter = (a: string) => {
+const nextLetter = (a: string): string => {
   let result = '';
   for (let i = 0; i < a.length; i++) {
     let char = a[i];
@@ -327,7 +327,7 @@ console.log(nextLetter('sdrshmf'));
 // Write a function that takes an array (a) and a value (n) as argument
 // Return the nth element of 'a'
 
-const arrayReturn = (a: number[], b: number) => a[b - 1];
+const arrayReturn = (a: number[], b: number): number => a[b - 1];
 
 console.log(arrayReturn([1, 2, 3, 4, 5], 3));
 console.log(arrayReturn([10, 9, 8, 7, 6], 5));
@@ -337,7 +337,7 @@ console.log(arrayReturn([7, 2, 1, 6, 3], 1));
 // Remove the first 3 elements of 'a'
 // Return the result
 
-const removeArray = (a: number[]) => a.slice(3);
+const removeArray = (a: number[]): number[] => a.slice(3);
 
 console.log(removeArray([1, 2, 3, 4]));
 console.log(removeArray([5, 4, 3, 2, 1, 0]));
@@ -347,7 +347,7 @@ console.log(removeArray([99, 1, 1]));
 // Extract the last 3 elements of a
 // Return the resulting array
 
-const lastThreeArray = (a: number[]) => {
+const lastThreeArray = (a: number[]): number[] => {
   const secondArray = a.slice(-3);
   return secondArray;
 };
@@ -360,7 +360,7 @@ console.log(lastThreeArray([99, 1, 1]));
 // Extract the first 3 elements of a
 // Return the resulting array
 
-const firstThreeArray = (a: number[]) => {
+const firstThreeArray = (a: number[]): number[] => {
   const secondArray = a.slice(0, 3);
   return secondArray;
 };
@@ -372,7 +372,7 @@ console.log(firstThreeArray([99, 1, 1]));
 // Write a function that takes an array (a) and a number (n) as arguments
 // It should return the last n elements of a
 
-const lastElements = (a: number[], n: number) => {
+const lastElements = (a: number[], n: number): number[] => {
   const secondArray = a.slice(-n);
   return secondArray;
 };
@@ -385,7 +385,8 @@ console.log(lastElements([1, 2, 3, 4, 5, 6, 7, 8], 3));
 // The function should clean a from all occurrences of b
 // Return the filtered array
 
-const clearArray = (a: any, b: any) => {
+const clearArray = (a: (string | number | boolean)[], b: number | string | boolean):
+(string | number | boolean)[] => {
   const unfilteredArray = a.filter((number: any) => number !== b);
   return unfilteredArray;
 };
@@ -398,7 +399,7 @@ console.log(clearArray([1, 2, '2', 1], 1));
 // Write a function that takes an array (a) as argument
 // Return the number of elements in a
 
-const numberOfElementsArray = (a: number[]) => a.length;
+const numberOfElementsArray = (a: number[]): number => a.length;
 
 console.log(numberOfElementsArray([1, 2, 2, 4]));
 console.log(numberOfElementsArray([9, 9, 9]));
@@ -407,7 +408,7 @@ console.log(numberOfElementsArray([4, 3, 2, 1, 0]));
 // Write a function that takes an array of numbers as argument
 // Return the number of negative values in the array
 
-const negativeValues = (a: number[]) => {
+const negativeValues = (a: number[]): number => {
   const negativesCount = a.filter((value) => value < 0);
   return negativesCount.length;
 };
@@ -419,7 +420,7 @@ console.log(negativeValues([4, -3, 2, 1, 0]));
 // Write a function that takes an array of numbers as argument
 // It should return an array with the numbers sorted in descending order
 
-const sortArray = (a: number[]) => a.sort().reverse();
+const sortArray = (a: number[]): number[] => a.sort().reverse();
 
 console.log(sortArray([1, 3, 2]));
 console.log(sortArray([4, 2, 3, 1]));
@@ -428,7 +429,7 @@ console.log(sortArray([4, 2, 3, 1]));
 // Sort the array elements alphabetically
 // Return the result
 
-const stringSortArray = (a: string[]) => a.sort();
+const stringSortArray = (a: string[]): string[] => a.sort();
 
 console.log(stringSortArray(['b', 'c', 'd', 'a']));
 console.log(stringSortArray(['z', 'c', 'd', 'a', 'y', 'a', 'w']));
@@ -436,7 +437,7 @@ console.log(stringSortArray(['z', 'c', 'd', 'a', 'y', 'a', 'w']));
 // Write a function that takes an array of numbers as argument
 // It should return the average of the numbers
 
-const averageNumbersArray = (a: number[]) => a.reduce((a, b) => a + b, 0) / a.length;
+const averageNumbersArray = (a: number[]): number => a.reduce((a, b) => a + b, 0) / a.length;
 
 console.log(averageNumbersArray([10, 100, 40]));
 console.log(averageNumbersArray([10, 100, 1000]));
@@ -445,7 +446,7 @@ console.log(averageNumbersArray([-50, 0, 50, 200]));
 // Write a function that takes an array of strings as argument
 // Return the longest string
 
-const longestString = (a: string[]) => {
+const longestString = (a: string[]): string => {
   let longest = '';
   for (const str of a) {
     if (str.length > longest.length) {
@@ -462,7 +463,7 @@ console.log(longestString(['I', 'need', 'candy']));
 // It should return true if all elements in the array are equal
 // It should return false otherwise
 
-const equalElements = (a: any[]) => {
+const equalElements = (a: (string | number | boolean)[]): boolean => {
   const referenceElements = a[0];
   for (let i = 0; i < a.length; i++) {
     if (a[i] !== referenceElements) {
@@ -480,7 +481,8 @@ console.log(equalElements(['10', 10, 10, 10]));
 // Write a function that takes arguments an arbitrary number of arrays
 // It should return an array containing the values of all arrays
 
-const multipleArrays = (...arrays: any[]) => [].concat(...arrays);
+const multipleArrays = (...arrays: any[]):
+(string | number | boolean)[] => [].concat(...arrays);
 
 console.log(multipleArrays([1, 2, 3], [4, 5, 6]));
 console.log(multipleArrays(['a', 'b', 'c'], [4, 5, 6]));
@@ -490,7 +492,8 @@ console.log(multipleArrays([true, true], [1, 2], ['a', 'b']));
 // Sort the array by property b in ascending order
 // Return the sorted array
 
-const arrayOfObjects = (arr: any[]) => arr.sort((a, b) => a.a - b.b);
+const arrayOfObjects = (arr: { a: number; b: number}[]): { a: number; b: number}[] =>
+arr.sort((a, b) => a.a - b.b);
 
 console.log(arrayOfObjects([{ a: 1, b: 2 }, { a: 5, b: 4 }]));
 console.log(arrayOfObjects([{ a: 2, b: 10 }, { a: 5, b: 4 }]));
@@ -501,7 +504,7 @@ console.log(arrayOfObjects([{ a: 1, b: 7 }, { a: 2, b: 1 }]));
 // Sort the merge result in ascending order
 // Return the resulting array
 
-const removeDublicates = (a: number[], b: number[]) => {
+const removeDublicates = (a: number[], b: number[]): number[] => {
   const mergedArrays = a.concat(b);
   const sortedArrays = mergedArrays.sort((c, d) => c - d);
   const result = [];
@@ -520,7 +523,7 @@ console.log(removeDublicates([-10, 22, 333, 42], [-11, 5, 22, 41, 42]));
 // Sum up all array elements with a value greater than b
 // Return the sum
 
-const sumElements = (a: number[], b: number) => {
+const sumElements = (a: number[], b: number): number => {
   let result = 0;
   for (let i = 0; i < a.length; i++) {
     if (a[i] > b) {
@@ -537,7 +540,7 @@ console.log(sumElements([78, 99, 100, 101, 401], 99));
 // Write a function that takes two numbers (min and max) as arguments
 // Return an array of numbers in the range min to max
 
-const minMax = (min: number, max: number) => {
+const minMax = (min: number, max: number): number[] => {
   const result = [];
   for (let i = min; i <= max; i++) {
     result.push(i);
@@ -557,7 +560,7 @@ console.log(minMax(2, 7));
 // For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
 // { a: ['Alf', 'Alice'], b: ['Ben']}
 
-const fristLetterGroup = (arr: string[]) => {
+const fristLetterGroup = (arr: string[]): Record<string, string[]> => {
   const firstObejct: Record<string, string[]> = {};
   for (let i = 0; i < arr.length; i++) {
     const firstLetter = arr[i][0];
@@ -579,7 +582,7 @@ console.log(fristLetterGroup(['Berlin', 'Paris', 'Prague']));
 // The other elements should be the elements of the original array
 // Try not to mutate the original array
 
-const elementsArray = (arr: any[], n: number) => {
+const elementsArray = (arr: any, n: number): number[] => {
   const result = [];
   if (n >= 6) {
     result[0] = n;
@@ -597,7 +600,7 @@ console.log(elementsArray([null, false], 11));
 // Save every nth element in a new array
 // Return the new array
 
-const nthArray = (a: number[], n: number) => {
+const nthArray = (a: number[], n: number): number[] => {
   const result = [];
   for (let i = -1; i < a.length; i += n) {
     result.push(a[i]);
@@ -613,7 +616,7 @@ console.log(nthArray([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2));
 // Write a function that takes an object with two properties as argument
 // It should return the value of the property with key country
 
-const objectCountry = (obj: {country: string, continent: string}) => obj.country;
+const objectCountry = (obj: {country: string, continent: string}): string => obj.country;
 
 console.log(objectCountry({ continent: 'Asia', country: 'Japan' }));
 console.log(objectCountry({ country: 'Sweden', continent: 'Europe' }));
@@ -622,7 +625,7 @@ console.log(objectCountry({ country: 'Sweden', continent: 'Europe' }));
 // It should return the value of the property with key 'prop-2'
 // Tip: you might want to use the square brackets property accessor
 
-const newObject = (obj: Record<string, any>) => obj['prop-2'];
+const newObject = (obj: Record<string, any>): number => obj['prop-2'];
 
 console.log(newObject({ one: 1, 'prop-2': 2 }));
 console.log(newObject({ 'prop-2': 'two', prop: 'test' }));
@@ -630,7 +633,7 @@ console.log(newObject({ 'prop-2': 'two', prop: 'test' }));
 // Write a function that takes an object with two properties and a string as arguments
 // It should return the value of the property with key equal to the value of the string
 
-const newObjectAB = (obj: { [prop1: string]: any }, str: string) => {
+const newObjectAB = (obj: { [prop1: string]: string }, str: string): string => {
   if (str in obj) {
     return obj[str];
   }
@@ -644,7 +647,7 @@ console.log(newObjectAB({ country: 'Sweden', continent: 'Europe' }, 'country'));
 // Return true if a has a property with key b
 // Return false otherwise
 
-const objectAndString = (obj: Record<string, any>, str: string) => {
+const objectAndString = (obj: Record<string, any>, str: string): boolean => {
   if (str in obj) {
     return true;
   }
@@ -659,7 +662,7 @@ console.log(objectAndString({ x: 'a', y: 'b', z: 'c' }, 'z'));
 // Create an object that has a property with key 'key' and a value of a
 // Return the object
 
-const keyObject = (a: string) => {
+const keyObject = (a: string): {key: string} => {
   const myObject = {
     key: a,
   };
@@ -674,7 +677,7 @@ console.log(keyObject('b'));
 // Create an object that has a property with key 'a' and a value of 'b'
 // Return the object
 
-const twoStringObject = (a: string, b:string) => {
+const twoStringObject = (a: string, b:string): {[x: string]: string} => {
   const myObject = {
     [a]: b,
   };
@@ -689,7 +692,8 @@ console.log(twoStringObject('b', 'w'));
 // Create an object that has properties with keys 'a' and corresponding values 'b'
 // Return the object
 
-const arrayObjects = (a: any[], b: any[]) => {
+const arrayObjects = (a: (string | number)[] | string[], b: number[] | (string | number)[]):
+Record<string, number> => {
   const myObject: Record<string, any> = {};
   for (let i = 0; i < a.length; i++) {
     myObject[(a[i])] = b[i];
@@ -704,7 +708,7 @@ console.log(arrayObjects([1, 'b'], ['a', 2]));
 // Write a function that takes an object (a) as argument
 // Return an array with all object keys
 
-const newKeyObject = (obj: Record<string, any>) => Object.keys(obj);
+const newKeyObject = (obj: Record<string, number>): string[] => Object.keys(obj);
 
 console.log(newKeyObject({ a: 1, b: 2, c: 3 }));
 console.log(newKeyObject({
@@ -715,7 +719,7 @@ console.log(newKeyObject({ w: 15, x: 22, y: 13 }));
 // Write a function that takes an object (a) as argument
 // Return the sum of all object values
 
-const sumObjectValues = (obj: Record<string, any>) => {
+const sumObjectValues = (obj: Record<string, number>): number => {
   const values = Object.values(obj);
   const summedElements = values.reduce((acc, currentValue) => acc + currentValue, 0);
   return summedElements;
@@ -731,7 +735,7 @@ console.log(sumObjectValues({ w: 15, x: 22, y: 13 }));
 // It should return an object with all original object properties
 // except for the property with key 'b'
 
-const objectNoB = (obj: Record<string, any>) => {
+const objectNoB = (obj: Record<string, number>): Record<string, number> => {
   delete obj.b;
   return obj;
 };
@@ -749,7 +753,8 @@ console.log(objectNoB({
 // Return the resulting object
 // It should have the properties 'a', 'b', 'c', 'd', and 'e'
 
-const twoObjects = (obj: Record<string, any>, obj2: Record<string, any>) => {
+const twoObjects = (obj: Record<string, number>, obj2: Record<string, number>):
+Record<string, number> => {
   obj2.d = obj2.b;
   delete obj2.b;
   const objectCopy = Object.assign(obj, obj2);
@@ -763,7 +768,7 @@ console.log(twoObjects({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }));
 // Multiply all values of 'a' by 'b'
 // Return the resulting object
 
-const multiplyObject = (a: Record<string, any>, b: number) => {
+const multiplyObject = (a: Record<string, number>, b: number): Record<string, number> => {
   const randomObject: Record<string, any> = {};
   for (const key in a) {
     if (a.hasOwnProperty(key)) {
@@ -783,7 +788,7 @@ console.log(multiplyObject({ w: 15, x: 22, y: 13 }, 6));
 // Somehow, the properties and keys of the object got mixed up
 // Swap the Javascript object's key with its values and return the resulting object
 
-const swappedKeyValues = (obj: Record<string, any>) => {
+const swappedKeyValues = (obj: Record<string, any>): string => {
   const swappedValues = Object.entries(obj).map(([key, value]) => [value, key]);
   return Object.fromEntries(swappedValues);
 };
@@ -801,7 +806,7 @@ console.log(swappedKeyValues({ a: 1, z: 24 }));
 // Replace empty strings and strings that contain only whitespace with null values
 // Return the resulting object
 
-const emptyStringsObject = (obj: Record<string, any>) => {
+const emptyStringsObject = (obj: Record<string, any>): Record<string, number> => {
   for (const key in obj) {
     if (typeof obj[key] === 'string' && obj[key].trim() === '') {
       obj[key] = null;
@@ -825,7 +830,7 @@ console.log(emptyStringsObject({
 // Attach the unit kg to the weight
 // Return a new object with all available properties that we are interested in
 
-const personalObject = (obj: Record<string, any>) => {
+const personalObject = (obj: Record<string, any>): Record<string, number> => {
   const myObject: Record<string, any> = {};
 
   if (obj.hasOwnProperty('fn')) {
@@ -861,7 +866,7 @@ console.log(personalObject({
 // Return the new array of objects
 // Tip: try not to mutate the original array
 
-const arrayStringAndObjects = (obj: Record<string, any>, str: string) => {
+const arrayStringAndObjects = (obj: Record<string, any>, str: string): Record<string, number> => {
   for (let i = 0; i < obj.length; i++) {
     obj[i].continent = str;
   }
@@ -876,8 +881,8 @@ console.log(arrayStringAndObjects([{ city: 'Stockholm', country: 'Sweden' }, { c
 // It should have a key for each unique value of the array
 // The corresponding object value should be the number of times the key occurs within the array
 
-const arrayToObject = (arr: number []) => {
-  const myObject: Record<string, any> = {};
+const arrayToObject = (arr: number []): Record<string, number> => {
+  const myObject: Record<string, number> = {};
 
   for (let i = 0; i < arr.length; i++) {
     if (myObject[arr[i]] === undefined) {
@@ -940,7 +945,7 @@ console.log(sameDay(new Date('2000/11/01'), new Date('2000/01/01')));
 // and return an array which contains elements from both
 // arrays
 
-const spreadArray = (...array: any[]) => [].concat(...array);
+const spreadArray = (...array: any): number[] => [].concat(...array);
 
 console.log(spreadArray([1, 2], [3, 4]));
 console.log(spreadArray([1, 2], [3, 4, 5, 6]));
@@ -949,7 +954,7 @@ console.log(spreadArray([1, 2], [3, 4, 5, 6]));
 // and return an array which contains all elements from the given array
 // and the given string as the last element
 
-const arrayAndString = (arr: any[], str: string) => [...arr, str];
+const arrayAndString = (arr: string[], str: string): string[] => [...arr, str];
 
 console.log(arrayAndString(['Apple', 'Orange', 'Banana'], 'Kiwi'));
 
@@ -957,7 +962,7 @@ console.log(arrayAndString(['Apple', 'Orange', 'Banana'], 'Kiwi'));
 // and return an array which contains all elements from the given array
 // and the given string as the first element
 
-const stringAndArray = (arr: any[], str: string) => [str, ...arr];
+const stringAndArray = (arr: string[], str: string): string[] => [str, ...arr];
 
 console.log(stringAndArray(['Apple', 'Orange', 'Banana'], 'Kiwi'));
 
